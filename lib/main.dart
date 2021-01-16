@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_first_application/answers.dart';
+import 'questions.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,8 +12,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var questionIndex = 0;
-
   void answerQuestion() {
     setState(() {
       questionIndex = questionIndex + 1;
@@ -21,63 +21,57 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
-      'What\'s your favorite color?',
-      'What\'s your favorite animal?',
-    ];
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
           title: Center(
-            child: Text(
-              'MyApp',
-            ),
+            child: Text('MyApp'),
           ),
         ),
-        body: Center(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(17.0),
-                child: Text(questions[questionIndex]),
-              ),
-              SizedBox(height: 20),
-              FlatButton(
-                  child: Text('FlatButton'),
-                  onPressed: () {
-                    answerQuestion();
-                  }),
-              TextButton(
-                  child: Text('New-TextButton'),
-                  onPressed: () {
-                    answerQuestion();
-                  }),
-              SizedBox(height: 30),
-              RaisedButton(
-                  child: Text('RaisedButton'),
-                  onPressed: () {
-                    answerQuestion();
-                  }),
-              ElevatedButton(
-                  child: Text('New-ElevatedButton'),
-                  onPressed: () {
-                    answerQuestion();
-                  }),
-              SizedBox(height: 30),
-              OutlineButton(
-                  child: Text('OutlineButton'),
-                  onPressed: () {
-                    answerQuestion();
-                  }),
-              OutlinedButton(
-                  child: Text('New-OutlinedButton'),
-                  onPressed: () {
-                    answerQuestion();
-                  }),
-            ],
-          ),
+        body: Column(
+          children: [
+            Questions(questions[questionIndex]['questionText']),
+            SizedBox(height: 20),
+            ...(questions[questionIndex]['answer'] as List<String>)
+                .map((answer) {
+              return Answer(answerQuestion, answer);
+            }).toList(),
+          ],
         ),
       ),
     );
   }
 }
+
+//               FlatButton(
+//                   child: Text('FlatButton'),
+//                   onPressed: () {
+//                     answerQuestion();
+//                   }),
+//               TextButton(
+//                   child: Text('New-TextButton'),
+//                   onPressed: () {
+//                     answerQuestion();
+//                   }),
+
+//               RaisedButton(
+//                   child: Text('RaisedButton'),
+//                   onPressed: () {
+//                     answerQuestion();
+//                   }),
+//               ElevatedButton(
+//                   child: Text('New-ElevatedButton'),
+//                   onPressed: () {
+//                     answerQuestion();
+//                   }),
+
+//               OutlineButton(
+//                   child: Text('OutlineButton'),
+//                   onPressed: () {
+//                     answerQuestion();
+//                   }),
+//               OutlinedButton(
+//                   child: Text('New-OutlinedButton'),
+//                   onPressed: () {
+//                     answerQuestion();
+//                   }),
