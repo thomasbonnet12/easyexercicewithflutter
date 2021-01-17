@@ -28,16 +28,18 @@ class _MyAppState extends State<MyApp> {
             child: Text('MyApp'),
           ),
         ),
-        body: Column(
-          children: [
-            Questions(questions[questionIndex]['questionText']),
-            SizedBox(height: 20),
-            ...(questions[questionIndex]['answer'] as List<String>)
-                .map((answer) {
-              return Answer(answerQuestion, answer);
-            }).toList(),
-          ],
-        ),
+        body: questionIndex < questions.length
+            ? Column(
+                children: [
+                  Questions(questions[questionIndex]['questionText']),
+                  SizedBox(height: 20),
+                  ...(questions[questionIndex]['answer'] as List<String>)
+                      .map((answer) {
+                    return Answer(answerQuestion, answer);
+                  }).toList(),
+                ],
+              )
+            : Center(child: Text('You did it1')),
       ),
     );
   }
