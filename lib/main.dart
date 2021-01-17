@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_first_application/answers.dart';
 import 'package:flutter_first_application/quiz.dart';
 import 'package:flutter_first_application/result.dart';
+
 import 'questions.dart';
 
 void main() {
@@ -14,7 +14,9 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  void answerQuestion() {
+  var _totalScore = 0;
+  void answerQuestion(int score) {
+    _totalScore += score;
     setState(() {
       questionIndex = questionIndex + 1;
     });
