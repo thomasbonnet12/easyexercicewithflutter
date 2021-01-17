@@ -25,14 +25,26 @@ var questionIndex = 0;
 var questions = [
   {
     'questionText': 'What\'s your favorite color?',
-    'answer': ['Blue', 'White', 'Red']
+    'answer': [
+      {'text': 'Blue', 'score': 10},
+      {'text': 'White', 'score': 5},
+      {'text': 'Red', 'score': 1}
+    ]
   },
   {
     'questionText': 'What\'s your favorite animal?',
-    'answer': ['Dog', 'Cat', 'Elephant']
+    'answer': [
+      {'text': 'Dog', 'score': 10},
+      {'text': 'Cat', 'score': 5},
+      {'text': 'Elephant', 'score': 1}
+    ]
   },
   {
     'questionText': 'What\'s your favorite city?',
-    'answer': ['Barcelona', 'Tokyo', 'New-York']
+    'answer': [
+      {'text': 'Barcelona', 'score': 5},
+      {'text': 'Tokyo', 'score': 10},
+      {'text': 'New-York', 'score': 1}
+    ]
   },
 ];

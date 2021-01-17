@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_first_application/answers.dart';
+import 'package:flutter_first_application/quiz.dart';
+import 'package:flutter_first_application/result.dart';
 import 'questions.dart';
 
 void main() {
@@ -29,17 +31,11 @@ class _MyAppState extends State<MyApp> {
           ),
         ),
         body: questionIndex < questions.length
-            ? Column(
-                children: [
-                  Questions(questions[questionIndex]['questionText']),
-                  SizedBox(height: 20),
-                  ...(questions[questionIndex]['answer'] as List<String>)
-                      .map((answer) {
-                    return Answer(answerQuestion, answer);
-                  }).toList(),
-                ],
-              )
-            : Center(child: Text('You did it1')),
+            ? Quiz(
+                questions: questions,
+                answerQuestion: answerQuestion,
+                questionIndex: questionIndex)
+            : Result(),
       ),
     );
   }
