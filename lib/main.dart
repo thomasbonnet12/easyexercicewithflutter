@@ -15,6 +15,14 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _totalScore = 0;
+
+  void resetQuiz() {
+    setState(() {
+      questionIndex = 0;
+      _totalScore = 0;
+    });
+  }
+
   void answerQuestion(int score) {
     _totalScore += score;
     setState(() {
@@ -27,51 +35,14 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Center(
-            child: Text('MyApp'),
-          ),
-        ),
+        appBar: AppBar(title: Center(child: Text('MyApp'))),
         body: questionIndex < questions.length
             ? Quiz(
                 questions: questions,
                 answerQuestion: answerQuestion,
                 questionIndex: questionIndex)
-            : Result(),
+            : Result(_totalScore, resetQuiz),
       ),
     );
   }
 }
-
-//               FlatButton(
-//                   child: Text('FlatButton'),
-//                   onPressed: () {
-//                     answerQuestion();
-//                   }),
-//               TextButton(
-//                   child: Text('New-TextButton'),
-//                   onPressed: () {
-//                     answerQuestion();
-//                   }),
-
-//               RaisedButton(
-//                   child: Text('RaisedButton'),
-//                   onPressed: () {
-//                     answerQuestion();
-//                   }),
-//               ElevatedButton(
-//                   child: Text('New-ElevatedButton'),
-//                   onPressed: () {
-//                     answerQuestion();
-//                   }),
-
-//               OutlineButton(
-//                   child: Text('OutlineButton'),
-//                   onPressed: () {
-//                     answerQuestion();
-//                   }),
-//               OutlinedButton(
-//                   child: Text('New-OutlinedButton'),
-//                   onPressed: () {
-//                     answerQuestion();
-//                   }),
